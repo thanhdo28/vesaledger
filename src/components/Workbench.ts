@@ -72,7 +72,7 @@ export function renderWorkbench(): string {
           </div>
         </div>
 
-        <!-- Right: Claude Deterministic Output Chrome -->
+        <!-- Right: Small VLM Deterministic Output Chrome -->
         <div class="lg:col-span-7">
           <div class="bg-[#181715] rounded-[12px] p-6 text-[#faf9f5] card-dark-border h-full flex flex-col justify-between">
             <div>

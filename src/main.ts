@@ -120,7 +120,7 @@ function executeErpSync() {
   const btn = document.getElementById('btn-sync-erp');
   const statusBox = document.getElementById('sync-status-box');
 
-  if (btn) btn.innerHTML = '<span>Processing Claude STP Gateway...</span>';
+  if (btn) btn.innerHTML = '<span>Processing VLM STP Gateway...</span>';
 
   setTimeout(() => {
     const txnId = 'TXN-ERP-2026-' + Math.floor(100000 + Math.random() * 900000);

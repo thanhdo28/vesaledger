@@ -42,7 +42,7 @@ vesaledger/
         ├── ExtractionPipeline.ts # 4-stage pipeline & live ERP dispatcher sandbox
         ├── Workbench.ts        # Multi-scenario audit inspection workbench
         ├── Architecture.ts     # Engine architecture & 200k context passes
-        ├── Models.ts           # Multi-model routing (Small VLM, Sonnet, Opus)
+        ├── Models.ts           # Small VLM architecture tiers
         ├── Integrations.ts     # 6 native ERP / Banking connectors
         ├── Security.ts         # Zero retention SLA & SOC2 Type II compliance
         ├── Pricing.ts          # Volume-based pricing tiers ($0 pilot, $649 scale, custom)

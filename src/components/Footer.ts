@@ -31,12 +31,12 @@ export function renderFooter(): string {
         </div>
 
         <div>
-          <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider font-mono mb-4">Models</h4>
+          <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider font-mono mb-4">Architecture</h4>
           <ul class="space-y-2.5 text-[13px]">
-            <li><a href="#" class="hover:text-white transition">Small VLM (Fast)</a></li>
-            <li><a href="#" class="hover:text-white transition">Sonnet 3.5 Core</a></li>
-            <li><a href="#" class="hover:text-white transition">Claude 3 Opus</a></li>
-            <li><a href="#" class="hover:text-white transition">Computer Use API</a></li>
+            <li><a href="#" class="hover:text-white transition">Small VLM Fast</a></li>
+            <li><a href="#" class="hover:text-white transition">Small VLM Doc Parser</a></li>
+            <li><a href="#" class="hover:text-white transition">Small VLM Forensic Guard</a></li>
+            <li><a href="#" class="hover:text-white transition">Bounding-Box OCR Engine</a></li>
           </ul>
         </div>
 

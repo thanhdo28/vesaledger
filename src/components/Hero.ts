@@ -75,7 +75,7 @@ export function renderHero(): string {
                 </div>
               </div>
 
-              <!-- Claude Analysis Step -->
+              <!-- Small VLM Analysis Step -->
               <div class="bg-[#252320] p-3.5 rounded-[8px] border border-white/10 space-y-2">
                 <div class="flex items-center justify-between">
                   <span class="text-[#cc785c] font-semibold flex items-center gap-1.5">
