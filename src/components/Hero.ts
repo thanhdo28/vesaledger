@@ -11,21 +11,27 @@ export function renderHero(): string {
           </div>
 
           <h1 class="text-[52px] sm:text-[62px] leading-[1.04] text-[#141413] font-serif">
-            Financial reconciliation with zero margin for error.
+            Catch every invoice error before it hits your ledger.
           </h1>
 
           <p class="text-[17px] text-[#3d3d3a] leading-[1.6] max-w-xl">
-            VeraLedger deploys lightweight, sub-second Vision-Language Models (VLMs) to process documents in &lt; 1 sec/page with &gt; 98% extraction accuracy. Cross-reference messy PDFs, raw MT940 bank feeds, Stripe transaction logs, and ERP ledgers with strict cryptographic bounding boxes and zero hallucinated journals.
+            VeraLedger audits receipts, verifies 3-way POs, and auto-codes line items directly to your Chart of Accounts in under 1 second. Powered by specialized Small VLMs with &gt; 98.4% verified accuracy. Plans start at $20/month with zero contracts.
           </p>
 
           <div class="pt-2 flex flex-wrap items-center gap-4">
-            <a href="#pilot" class="px-6 py-3.5 text-[14px] font-medium bg-[#cc785c] hover:bg-[#a9583e] text-white rounded-[8px] transition shadow-sm inline-flex items-center gap-2">
-              <span>Start Enterprise Trial</span>
+            <a href="#pricing" class="px-6 py-3.5 text-[14px] font-medium bg-[#cc785c] hover:bg-[#a9583e] text-white rounded-[8px] transition shadow-sm inline-flex items-center gap-2">
+              <span>Start 14-Day Free Trial</span>
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a href="#workbench" class="px-6 py-3.5 text-[14px] font-medium bg-[#faf9f5] hover:bg-[#efe9de] text-[#141413] rounded-[8px] card-border-hairline transition">
-              Explore Demo Workspace
+              Explore Live Sandbox
             </a>
+          </div>
+
+          <div class="flex items-center gap-4 text-[12px] text-[#6c6a64] font-medium pt-1">
+            <span class="flex items-center gap-1.5"><span class="text-[#5db872]">✓</span> SOC 2 Type II</span>
+            <span class="flex items-center gap-1.5"><span class="text-[#5db872]">✓</span> Zero Training Retention</span>
+            <span class="flex items-center gap-1.5"><span class="text-[#5db872]">✓</span> No Card Required</span>
           </div>
 
           <!-- Proof Metrics -->

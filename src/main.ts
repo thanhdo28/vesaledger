@@ -7,6 +7,7 @@ import { renderArchitecture } from './components/Architecture';
 import { renderModels } from './components/Models';
 import { renderIntegrations } from './components/Integrations';
 import { renderSecurity } from './components/Security';
+import { renderRoiCalculator } from './components/RoiCalculator';
 import { renderPricing } from './components/Pricing';
 import { renderPilotForm } from './components/PilotForm';
 import { renderFooter } from './components/Footer';
@@ -25,6 +26,7 @@ app.innerHTML = `
   ${renderModels()}
   ${renderIntegrations()}
   ${renderSecurity()}
+  ${renderRoiCalculator()}
   ${renderPricing()}
   ${renderPilotForm()}
   ${renderFooter()}
@@ -179,6 +181,52 @@ document.getElementById('btn-sync-erp')?.addEventListener('click', executeErpSyn
 document.getElementById('tab-btn-3way')?.addEventListener('click', () => switchScenario('3way'));
 document.getElementById('tab-btn-fx')?.addEventListener('click', () => switchScenario('fx'));
 document.getElementById('tab-btn-fraud')?.addEventListener('click', () => switchScenario('fraud'));
+
+// --- Interactive Logic for ROI Calculator ---
+function updateRoiCalculator() {
+  const volSlider = document.getElementById('calc-volume-slider') as HTMLInputElement | null;
+  const rateSlider = document.getElementById('calc-rate-slider') as HTMLInputElement | null;
+  
+  if (!volSlider || !rateSlider) return;
+
+  const volume = parseInt(volSlider.value, 10);
+  const rate = parseInt(rateSlider.value, 10);
+
+  const volDisplay = document.getElementById('calc-volume-display');
+  const rateDisplay = document.getElementById('calc-rate-display');
+  const hoursSavedEl = document.getElementById('calc-hours-saved');
+  const dollarsSavedEl = document.getElementById('calc-dollars-saved');
+  const errorsEl = document.getElementById('calc-errors-blocked');
+  const planRecEl = document.getElementById('calc-plan-rec');
+
+  if (volDisplay) volDisplay.innerText = volume.toLocaleString() + ' docs';
+  if (rateDisplay) rateDisplay.innerText = '$' + rate + ' / hr';
+
+  // Average manual invoice entry + cross-check = 3.5 minutes per doc
+  const hoursSaved = Math.round((volume * 3.5) / 60);
+  const dollarsSaved = Math.round(hoursSaved * rate);
+  const errorsBlocked = Math.round(volume * 0.03); // 3% typical manual entry discrepancy rate
+
+  if (hoursSavedEl) hoursSavedEl.innerText = hoursSaved.toLocaleString() + ' hrs';
+  if (dollarsSavedEl) dollarsSavedEl.innerText = '$' + dollarsSaved.toLocaleString();
+  if (errorsEl) errorsEl.innerText = '~' + errorsBlocked + ' items';
+
+  if (planRecEl) {
+    if (volume <= 500) {
+      planRecEl.innerText = 'Starter ($20/mo)';
+    } else if (volume <= 5000) {
+      planRecEl.innerText = 'Growth ($99/mo)';
+    } else {
+      planRecEl.innerText = 'Enterprise ($499+/mo)';
+    }
+  }
+}
+
+document.getElementById('calc-volume-slider')?.addEventListener('input', updateRoiCalculator);
+document.getElementById('calc-rate-slider')?.addEventListener('input', updateRoiCalculator);
+
+// Initial calc
+updateRoiCalculator();
 
 document.getElementById('pilot-form')?.addEventListener('submit', (e) => {
   e.preventDefault();

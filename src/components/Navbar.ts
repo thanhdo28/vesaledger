@@ -18,22 +18,22 @@ export function renderNavbar(): string {
       </div>
 
       <!-- Links -->
-      <nav class="hidden lg:flex items-center gap-7 text-[14px] font-medium text-[#3d3d3a]">
+      <nav class="hidden lg:flex items-center gap-6 text-[14px] font-medium text-[#3d3d3a]">
         <a href="#automation" class="hover:text-[#141413] transition text-[#cc785c]">Invoice Automation</a>
-        <a href="#pipeline" class="hover:text-[#141413] transition">Reconciliation Engine</a>
-        <a href="#workbench" class="hover:text-[#141413] transition">Live Workbench</a>
-        <a href="#connectors" class="hover:text-[#141413] transition">Integrations</a>
-        <a href="#security" class="hover:text-[#141413] transition">Security & Trust</a>
-        <a href="#pricing" class="hover:text-[#141413] transition">Pricing</a>
+        <a href="#pipeline" class="hover:text-[#141413] transition">Engine</a>
+        <a href="#workbench" class="hover:text-[#141413] transition">Live Sandbox</a>
+        <a href="#roi-calculator" class="hover:text-[#141413] transition">ROI Calculator</a>
+        <a href="#pricing" class="hover:text-[#141413] transition">Pricing ($20/mo)</a>
+        <a href="#security" class="hover:text-[#141413] transition">Security</a>
       </nav>
 
       <!-- Right cluster -->
       <div class="flex items-center gap-4">
-        <a href="#pilot" class="hidden md:inline-block text-[14px] font-medium text-[#141413] hover:text-[#cc785c] transition">
+        <a href="#pricing" class="hidden md:inline-block text-[14px] font-medium text-[#141413] hover:text-[#cc785c] transition">
           Sign in
         </a>
-        <a href="#pilot" class="px-5 py-2.5 text-[14px] font-medium bg-[#cc785c] hover:bg-[#a9583e] active:bg-[#a9583e] text-white rounded-[8px] transition shadow-sm">
-          Deploy Pilot
+        <a href="#pricing" class="px-5 py-2.5 text-[14px] font-medium bg-[#cc785c] hover:bg-[#a9583e] active:bg-[#a9583e] text-white rounded-[8px] transition shadow-sm">
+          Start Free Trial
         </a>
       </div>
     </div>
