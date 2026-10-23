@@ -66,7 +66,7 @@ export function renderPilotForm(): string {
         <div class="p-3 bg-slate-950 rounded-lg border border-white/5 text-[12px] text-slate-400">
           <span>${t('Direct support fallback:', 'Liên hệ kỹ thuật trực tiếp:')} </span>
           <span class="text-slate-200 font-mono">support@veraledger.site</span> · 
-          <a href="tel:+84944002809" class="text-blue-400 font-semibold hover:underline">0944 002 809</a>
+          <a href="tel:+842473086820" class="text-blue-400 font-semibold hover:underline">(+84) 24 7308 6820</a>
         </div>
 
         <button type="submit" class="w-full py-3.5 text-[14px] font-semibold bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white rounded-lg transition shadow-lg shadow-blue-600/30">

@@ -30,10 +30,10 @@ export function renderFooter(): string {
           <div class="text-[12.5px] text-slate-400 space-y-1.5 pt-2 font-mono">
             <div>
               <strong class="text-slate-200 font-sans">${t('Headquarters (Hanoi, Vietnam):', 'Trụ sở chính (Hà Nội, Việt Nam):')}</strong><br>
-              <span class="text-slate-300 font-sans">${t('Level 9, Keangnam Landmark 72, Pham Hung, Nam Tu Liem, Hanoi', 'Tầng 9, Keangnam Landmark 72, Phạm Hùng, Nam Từ Liêm, Hà Nội')}</span>
+              <span class="text-slate-300 font-sans">${t('Level 16, Lotte Center Hanoi, 54 Lieu Giai, Ba Dinh, Hanoi', 'Tầng 16, Lotte Center Hanoi, 54 Liễu Giai, Ba Đình, Hà Nội')}</span>
             </div>
             <div>
-              <span class="text-slate-400 font-sans">${t('Tel: ', 'Điện thoại: ')}</span><a href="tel:+84944002809" class="text-slate-200 hover:text-white font-semibold">0944 002 809</a>
+              <span class="text-slate-400 font-sans">${t('Tel: ', 'Điện thoại: ')}</span><a href="tel:+842473086820" class="text-slate-200 hover:text-white font-semibold">(+84) 24 7308 6820</a>
             </div>
             <div>
               <span class="text-slate-400 font-sans">Email: </span><a href="mailto:support@veraledger.site" class="text-blue-400 hover:underline">support@veraledger.site</a>
@@ -50,6 +50,7 @@ export function renderFooter(): string {
             <li><a href="#workbench" class="hover:text-white transition">${t('Live Sandbox', 'Môi trường Sandbox')}</a></li>
             <li><a href="#connectors" class="hover:text-white transition">${t('ERP Connectors', 'Cổng kết nối ERP')}</a></li>
             <li><a href="#blog" class="hover:text-white transition">${t('Engineering Blog', 'Bài viết Kỹ thuật')}</a></li>
+            <li><a href="#team" class="hover:text-white transition">${t('Founding Team', 'Đội ngũ Sáng lập')}</a></li>
             <li><a href="#security" class="hover:text-white transition">${t('Zero Retention SLA', 'Cam kết Zero Retention')}</a></li>
           </ul>
         </div>
@@ -70,9 +71,9 @@ export function renderFooter(): string {
           <h4 class="text-[12px] font-semibold text-white uppercase tracking-wider font-mono mb-4">${t('Support', 'Hỗ trợ')}</h4>
           <ul class="space-y-2.5 text-[13px]">
             <li><a href="mailto:support@veraledger.site" class="hover:text-white transition font-mono">support@veraledger.site</a></li>
-            <li><a href="tel:+84944002809" class="hover:text-white transition font-mono">0944 002 809</a></li>
+            <li><a href="tel:+842473086820" class="hover:text-white transition font-mono">(+84) 24 7308 6820</a></li>
             <li><a href="#roi-calculator" class="hover:text-white transition">${t('ROI Calculator', 'Tính toán ROI')}</a></li>
-            <li><a href="#pilot" class="hover:text-white transition">${t('Request Pilot', 'Yêu cầu chạy thử')}</a></li>
+            <li><a href="#pilot" class="hover:text-white transition">${t('Apply for Pilot', 'Đăng ký chạy thử')}</a></li>
           </ul>
         </div>
 

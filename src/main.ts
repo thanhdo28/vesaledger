@@ -10,6 +10,7 @@ import { renderIntegrations } from './components/Integrations';
 import { renderSecurity } from './components/Security';
 import { renderRoiCalculator } from './components/RoiCalculator';
 import { renderBlog } from './components/Blog';
+import { renderTeam } from './components/Team';
 import { renderPricing } from './components/Pricing';
 import { renderPilotForm } from './components/PilotForm';
 import { renderFooter } from './components/Footer';
@@ -32,6 +33,7 @@ function renderApp() {
     ${renderSecurity()}
     ${renderRoiCalculator()}
     ${renderBlog()}
+    ${renderTeam()}
     ${renderPricing()}
     ${renderPilotForm()}
     ${renderFooter()}

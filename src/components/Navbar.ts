@@ -17,7 +17,7 @@ export function renderNavbar(): string {
         <span class="text-slate-300">${t('SOC 2 & ISO 27001 Aligned', 'Kiểm soát theo chuẩn SOC 2 &amp; ISO 27001')}</span>
       </div>
       <div class="flex items-center gap-4">
-        <span>${t('Hanoi Office: ', 'Văn phòng Hà Nội: ')}<a href="tel:+84944002809" class="text-slate-100 hover:text-white font-semibold">0944 002 809</a></span>
+        <span>${t('Hanoi Office: ', 'Văn phòng Hà Nội: ')}<a href="tel:+842473086820" class="text-slate-100 hover:text-white font-semibold">(+84) 24 7308 6820</a></span>
         <span class="text-white/20">|</span>
         <span>Email: <a href="mailto:support@veraledger.site" class="text-slate-100 hover:text-white font-semibold">support@veraledger.site</a></span>
       </div>
@@ -49,7 +49,8 @@ export function renderNavbar(): string {
         <a href="#workbench" class="hover:text-white transition">${t('Live Sandbox', 'Môi trường mẫu')}</a>
         <a href="#connectors" class="hover:text-white transition">${t('ERP Connectors', 'Tích hợp ERP')}</a>
         <a href="#roi-calculator" class="hover:text-white transition">${t('ROI Calculator', 'Tính toán ROI')}</a>
-        <a href="#blog" class="hover:text-white transition">${t('Blog & Research', 'Nghiên cứu &amp; Blog')}</a>
+        <a href="#blog" class="hover:text-white transition">${t('Research', 'Nghiên cứu')}</a>
+        <a href="#team" class="hover:text-white transition">${t('Team', 'Đội ngũ')}</a>
         <a href="#pricing" class="hover:text-white transition">${t('Pricing', 'Bảng giá')}</a>
         <a href="#security" class="hover:text-white transition">${t('Security & SLA', 'Bảo mật &amp; SLA')}</a>
       </nav>
