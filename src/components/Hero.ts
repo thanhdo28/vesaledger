@@ -47,8 +47,8 @@ export function renderHero(): string {
           <!-- Proof Metrics -->
           <div class="pt-8 border-t border-white/10 grid grid-cols-3 gap-6">
             <div>
-              <div class="text-[28px] font-bold text-white tabular-nums">&gt; 98.4%</div>
-              <div class="text-[11px] text-slate-400 uppercase tracking-wider font-mono mt-0.5">${t('Extraction Accuracy', 'Độ chính xác bóc tách')}</div>
+              <div class="text-[28px] font-bold text-white tabular-nums">99.9%</div>
+              <div class="text-[11px] text-slate-400 uppercase tracking-wider font-mono mt-0.5">${t('Field Match Precision', 'Độ chính xác đối soát')}</div>
             </div>
             <div>
               <div class="text-[28px] font-bold text-white tabular-nums">&lt; 0.85s</div>

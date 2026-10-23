@@ -4,22 +4,22 @@ export function renderNavbar(): string {
   const lang = getLang();
   return `
   <!-- Top Global Utility Bar -->
-  <div class="bg-slate-900/90 text-slate-400 text-[11px] font-mono border-b border-white/5 py-1.5 px-6 hidden sm:block">
+  <div class="bg-slate-900/90 text-slate-300 text-[11px] font-mono border-b border-white/10 py-1.5 px-6 hidden sm:block">
     <div class="max-w-[1240px] mx-auto flex items-center justify-between">
       <div class="flex items-center gap-4">
         <span class="flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          ${t('All Systems Operational · 99.98% SLA', 'Hệ thống vận hành ổn định · Cam kết SLA 99,98%')}
+          <span class="text-slate-200">${t('All Systems Operational · 99.98% SLA', 'Hệ thống vận hành ổn định · Cam kết SLA 99,98%')}</span>
         </span>
         <span class="text-white/20">|</span>
-        <span>${t('Tier-III DC Architecture', 'Kiến trúc DC Chuẩn Tier-III')}</span>
+        <span class="text-slate-300">${t('Tier-III DC Architecture', 'Kiến trúc DC Chuẩn Tier-III')}</span>
         <span class="text-white/20">|</span>
-        <span>${t('SOC 2 & ISO 27001 Ready', 'Sẵn sàng chuẩn SOC 2 &amp; ISO 27001')}</span>
+        <span class="text-slate-300">${t('SOC 2 & ISO 27001 Ready', 'Sẵn sàng chuẩn SOC 2 &amp; ISO 27001')}</span>
       </div>
       <div class="flex items-center gap-4">
-        <span>${t('Tel:', 'Điện thoại:')} <a href="tel:+84944002809" class="text-slate-200 hover:text-white font-semibold">0944 002 809</a></span>
+        <span>${t('Hanoi Office: ', 'Văn phòng Hà Nội: ')}<a href="tel:+84944002809" class="text-slate-100 hover:text-white font-semibold">0944 002 809</a></span>
         <span class="text-white/20">|</span>
-        <span>Email: <a href="mailto:support@veraledger.site" class="text-slate-200 hover:text-white">support@veraledger.site</a></span>
+        <span>Email: <a href="mailto:support@veraledger.site" class="text-slate-100 hover:text-white font-semibold">support@veraledger.site</a></span>
       </div>
     </div>
   </div>

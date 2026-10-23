@@ -1,6 +1,6 @@
 export type Lang = 'en' | 'vi';
 
-let currentLang: Lang = (localStorage.getItem('veraledger_lang') as Lang) || 'en';
+let currentLang: Lang = (localStorage.getItem('veraledger_lang') as Lang) || 'vi';
 const listeners: Array<(lang: Lang) => void> = [];
 
 export function getLang(): Lang {
