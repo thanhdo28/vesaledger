@@ -49,6 +49,7 @@ export function renderNavbar(): string {
         <a href="#workbench" class="hover:text-white transition">${t('Live Sandbox', 'Môi trường mẫu')}</a>
         <a href="#connectors" class="hover:text-white transition">${t('ERP Connectors', 'Tích hợp ERP')}</a>
         <a href="#roi-calculator" class="hover:text-white transition">${t('ROI Calculator', 'Tính toán ROI')}</a>
+        <a href="#blog" class="hover:text-white transition">${t('Blog & Research', 'Nghiên cứu &amp; Blog')}</a>
         <a href="#pricing" class="hover:text-white transition">${t('Pricing', 'Bảng giá')}</a>
         <a href="#security" class="hover:text-white transition">${t('Security & SLA', 'Bảo mật &amp; SLA')}</a>
       </nav>

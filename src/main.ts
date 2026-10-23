@@ -9,12 +9,14 @@ import { renderModels } from './components/Models';
 import { renderIntegrations } from './components/Integrations';
 import { renderSecurity } from './components/Security';
 import { renderRoiCalculator } from './components/RoiCalculator';
+import { renderBlog } from './components/Blog';
 import { renderPricing } from './components/Pricing';
 import { renderPilotForm } from './components/PilotForm';
 import { renderFooter } from './components/Footer';
 
 import { sampleDocs } from './data/sampleDocs';
 import { scenarios } from './data/scenarios';
+import { blogPosts } from './data/blogs';
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
 
@@ -29,6 +31,7 @@ function renderApp() {
     ${renderIntegrations()}
     ${renderSecurity()}
     ${renderRoiCalculator()}
+    ${renderBlog()}
     ${renderPricing()}
     ${renderPilotForm()}
     ${renderFooter()}
@@ -215,6 +218,23 @@ function updateRoiCalculator() {
   }
 }
 
+function formatMarkdown(md: string): string {
+  let html = md.replace(/```([\s\S]*?)```/g, '<pre class="bg-slate-950 p-4 rounded-lg font-mono text-[12px] text-slate-300 border border-white/10 overflow-x-auto">$1</pre>');
+  html = html.replace(/^### (.*$)/gim, '<h3 class="text-[18px] font-bold text-white mt-6 mb-2">$1</h3>');
+  html = html.replace(/^#### (.*$)/gim, '<h4 class="text-[15px] font-semibold text-blue-400 mt-4 mb-2">$1</h4>');
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>');
+  html = html.replace(/^\* (.*$)/gim, '<li class="ml-4 list-disc text-slate-300">$1</li>');
+  html = html.replace(/^\d+\. (.*$)/gim, '<li class="ml-4 list-decimal text-slate-300">$1</li>');
+  html = html.replace(/^---$/gim, '<hr class="border-white/10 my-6">');
+  html = html.split('\n\n').map(p => {
+    p = p.trim();
+    if (!p) return '';
+    if (p.startsWith('<pre') || p.startsWith('<h') || p.startsWith('<li') || p.startsWith('<hr')) return p;
+    return `<p class="leading-relaxed text-slate-300">${p}</p>`;
+  }).join('\n');
+  return html;
+}
+
 function bindEvents() {
   document.getElementById('lang-btn-en')?.addEventListener('click', () => setLang('en'));
   document.getElementById('lang-btn-vi')?.addEventListener('click', () => setLang('vi'));
@@ -242,6 +262,34 @@ function bindEvents() {
   document.getElementById('btn-open-terms')?.addEventListener('click', () => tModal?.classList.remove('hidden'));
   document.getElementById('btn-close-terms')?.addEventListener('click', () => tModal?.classList.add('hidden'));
   document.getElementById('btn-dismiss-terms')?.addEventListener('click', () => tModal?.classList.add('hidden'));
+
+  // Blog Reader Modal
+  const blogModal = document.getElementById('modal-blog-reader');
+  document.querySelectorAll('.btn-read-blog').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const postId = target.dataset.postId;
+      const post = blogPosts.find(p => p.id === postId);
+      if (!post) return;
+      const lang = getLang();
+      const catEl = document.getElementById('blog-modal-cat');
+      const dateEl = document.getElementById('blog-modal-date');
+      const titleEl = document.getElementById('blog-modal-title');
+      const authorEl = document.getElementById('blog-modal-author');
+      const bodyEl = document.getElementById('blog-modal-body');
+
+      if (catEl) catEl.textContent = post.category[lang];
+      if (dateEl) dateEl.textContent = `${post.date} · ${post.readTime[lang]}`;
+      if (titleEl) titleEl.textContent = post.title[lang];
+      if (authorEl) authorEl.textContent = post.author[lang];
+      if (bodyEl) bodyEl.innerHTML = formatMarkdown(post.content[lang]);
+
+      blogModal?.classList.remove('hidden');
+    });
+  });
+
+  document.getElementById('btn-close-blog-modal')?.addEventListener('click', () => blogModal?.classList.add('hidden'));
+  document.getElementById('btn-dismiss-blog-modal')?.addEventListener('click', () => blogModal?.classList.add('hidden'));
 
   document.getElementById('pilot-form')?.addEventListener('submit', (e) => {
     e.preventDefault();

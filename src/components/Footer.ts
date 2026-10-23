@@ -49,6 +49,7 @@ export function renderFooter(): string {
             <li><a href="#pipeline" class="hover:text-white transition">${t('4-Way Match Engine', 'Engine Đối soát 4 chiều')}</a></li>
             <li><a href="#workbench" class="hover:text-white transition">${t('Live Sandbox', 'Môi trường Sandbox')}</a></li>
             <li><a href="#connectors" class="hover:text-white transition">${t('ERP Connectors', 'Cổng kết nối ERP')}</a></li>
+            <li><a href="#blog" class="hover:text-white transition">${t('Engineering Blog', 'Bài viết Kỹ thuật')}</a></li>
             <li><a href="#security" class="hover:text-white transition">${t('Zero Retention SLA', 'Cam kết Zero Retention')}</a></li>
           </ul>
         </div>
