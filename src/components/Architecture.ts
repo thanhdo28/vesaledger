@@ -1,71 +1,87 @@
+import { t } from '../i18n';
+
 export function renderArchitecture(): string {
   return `
-  <section id="pipeline" class="py-24 bg-[#efe9de] border-b border-[#e6dfd8]">
+  <section id="pipeline" class="py-24 bg-slate-950 border-b border-white/10">
     <div class="max-w-[1240px] mx-auto px-6">
       
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="text-[12px] font-mono text-[#cc785c] uppercase tracking-wider font-semibold mb-2">Engine Architecture</div>
-        <h2 class="text-[40px] sm:text-[48px] text-[#141413] font-serif leading-tight">
-          How VeraLedger solves zero-loss auditing at enterprise scale.
+        <div class="text-[12px] font-mono text-blue-400 uppercase tracking-wider font-semibold mb-2">
+          ${t('Engine Architecture', 'Kiến trúc Lõi Đối soát')}
+        </div>
+        <h2 class="text-[36px] sm:text-[44px] text-white font-bold leading-tight tracking-tight">
+          ${t('How VeraLedger ensures zero-variance reconciliation at enterprise scale.', 'Cách VeraLedger đảm bảo đối soát không sai lệch ở quy mô lớn.')}
         </h2>
-        <p class="text-[16px] text-[#3d3d3a] mt-3">
-          Generic OCR models drop line items on large tables. VeraLedger deploys a high-throughput small VLM for sub-second document parsing (&lt; 1s/page, &gt; 98% accuracy) paired with deterministic rules.
+        <p class="text-[15px] text-slate-300 mt-3">
+          ${t(
+            'Generic OCR engines fail on complex tables and non-standard tax formats. VeraLedger deploys a high-throughput parser (< 1s/page, > 98% accuracy) paired with deterministic financial validation rules.',
+            'Các công cụ OCR thông thường dễ bỏ sót dòng chi tiết trong bảng biểu phức tạp. VeraLedger kết hợp khả năng bóc tách siêu tốc (< 1s/trang, độ chính xác > 98%) cùng hệ thống luật kế toán xác thực nghiêm ngặt.'
+          )}
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <!-- Step 1 -->
-        <div class="bg-[#faf9f5] rounded-[12px] p-8 card-border-hairline flex flex-col justify-between">
+        <div class="bg-slate-900 rounded-xl p-8 border border-white/10 flex flex-col justify-between hover:border-white/20 transition">
           <div>
-            <div class="w-10 h-10 rounded-[8px] bg-[#efe9de] text-[#141413] flex items-center justify-center font-serif text-[18px] font-semibold mb-6 card-border-hairline">
-              I
+            <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/40 text-blue-400 flex items-center justify-center font-mono text-[16px] font-bold mb-6">
+              01
             </div>
-            <h3 class="text-[20px] font-semibold text-[#141413] mb-2 font-serif">
-              Multi-Source Ingestion
+            <h3 class="text-[18px] font-bold text-white mb-2">
+              ${t('Multi-Source Document Intake', 'Nạp dữ liệu đa nguồn')}
             </h3>
-            <p class="text-[14px] text-[#3d3d3a] leading-relaxed">
-              Pulls directly from S3/SFTP drops, ERP webhooks, Stripe/Adyen gateways, and email inboxes. Normalizes PDF, TIFF, MT940, CAMT.053, and EDIFACT feeds without pre-training templates.
+            <p class="text-[13.5px] text-slate-300 leading-relaxed">
+              ${t(
+                'Ingests invoices from email inboxes, direct S3/SFTP, bank statement feeds, and ERP webhooks. Normalizes XML, PDF, Excel, and scan formats without brittle custom templates.',
+                'Tự động thu thập hóa đơn từ email, thư mục chia sẻ SFTP/S3, sao kê ngân hàng và webhook ERP. Chuẩn hóa XML, PDF, Excel và scan mà không phụ thuộc template cứng.'
+              )}
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-[#e6dfd8] text-[12px] font-mono text-[#6c6a64]">
-            Formats: PDF, JSON, MT940, CSV, EDI
+          <div class="mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-slate-400">
+            Formats: XML (NĐ 123), PDF, MT940, CSV
           </div>
         </div>
 
         <!-- Step 2 -->
-        <div class="bg-[#faf9f5] rounded-[12px] p-8 card-border-hairline flex flex-col justify-between">
+        <div class="bg-slate-900 rounded-xl p-8 border border-white/10 flex flex-col justify-between hover:border-white/20 transition">
           <div>
-            <div class="w-10 h-10 rounded-[8px] bg-[#efe9de] text-[#141413] flex items-center justify-center font-serif text-[18px] font-semibold mb-6 card-border-hairline">
-              II
+            <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/40 text-blue-400 flex items-center justify-center font-mono text-[16px] font-bold mb-6">
+              02
             </div>
-            <h3 class="text-[20px] font-semibold text-[#141413] mb-2 font-serif">
-              Small VLM Multimodal Inference
+            <h3 class="text-[18px] font-bold text-white mb-2">
+              ${t('Sub-Second High-Precision Extraction', 'Bóc tách dữ liệu siêu tốc & chính xác')}
             </h3>
-            <p class="text-[14px] text-[#3d3d3a] leading-relaxed">
-              Specialized compact visual models extract nested line items, receipts, and tables in under 1 second per page with &gt; 98% verified accuracy. Handles handwritten notes and complex layouts.
+            <p class="text-[13.5px] text-slate-300 leading-relaxed">
+              ${t(
+                'Extracts itemized tables, tax codes, vendor registration numbers, and wire instructions in under 1 second per page with > 98.4% accuracy.',
+                'Trích xuất chi tiết từng dòng hàng, mã thuế, thông tin người bán và tài khoản thanh toán dưới 1 giây mỗi trang với độ chính xác trên 98,4%.'
+              )}
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-[#e6dfd8] text-[12px] font-mono text-[#6c6a64]">
+          <div class="mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-emerald-400">
             Speed: &lt; 850ms / page • Accuracy: &gt; 98.4%
           </div>
         </div>
 
         <!-- Step 3 -->
-        <div class="bg-[#faf9f5] rounded-[12px] p-8 card-border-hairline flex flex-col justify-between">
+        <div class="bg-slate-900 rounded-xl p-8 border border-white/10 flex flex-col justify-between hover:border-white/20 transition">
           <div>
-            <div class="w-10 h-10 rounded-[8px] bg-[#efe9de] text-[#141413] flex items-center justify-center font-serif text-[18px] font-semibold mb-6 card-border-hairline">
-              III
+            <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/40 text-blue-400 flex items-center justify-center font-mono text-[16px] font-bold mb-6">
+              03
             </div>
-            <h3 class="text-[20px] font-semibold text-[#141413] mb-2 font-serif">
-              Deterministic Ledger Reconciliation
+            <h3 class="text-[18px] font-bold text-white mb-2">
+              ${t('Deterministic 4-Way Reconciliation', 'Đối soát 4 chiều xác thực tuyệt đối')}
             </h3>
-            <p class="text-[14px] text-[#3d3d3a] leading-relaxed">
-              Calculates line-by-line tax rates across 140+ countries. Compares PO allocations against real bank settlements. Auto-generates balanced double-entry journals directly in your ERP.
+            <p class="text-[13.5px] text-slate-300 leading-relaxed">
+              ${t(
+                'Cross-references PO allocations, warehouse goods receipts, invoice amounts, and bank payment orders. Flags anomalies for Chief Accountant sign-off before ERP posting.',
+                'Đối chiếu chéo đơn đặt hàng, phiếu nhập kho, hóa đơn điện tử và lệnh thanh toán ngân hàng. Báo động ngay cho Kế toán trưởng trước khi ghi sổ cái.'
+              )}
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-[#e6dfd8] text-[12px] font-mono text-[#6c6a64]">
-            Integrations: SAP, NetSuite, Workday, Xero
+          <div class="mt-6 pt-4 border-t border-white/10 text-[11px] font-mono text-slate-400">
+            ERPs: SAP, NetSuite, MISA, FAST, Bravo
           </div>
         </div>
 

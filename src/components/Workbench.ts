@@ -1,28 +1,35 @@
+import { t } from '../i18n';
+
 export function renderWorkbench(): string {
   return `
-  <section id="workbench" class="py-24 bg-[#faf9f5] border-b border-[#e6dfd8]">
+  <section id="workbench" class="py-24 bg-slate-950 border-b border-white/10">
     <div class="max-w-[1240px] mx-auto px-6">
       
       <div class="max-w-2xl mb-12">
-        <div class="text-[12px] font-mono text-[#cc785c] uppercase tracking-wider font-semibold mb-2">Interactive Inspection Workbench</div>
-        <h2 class="text-[38px] sm:text-[44px] text-[#141413] leading-tight font-serif">
-          See how the auditor isolates discrepancies across messy payloads.
+        <div class="text-[12px] font-mono text-blue-400 uppercase tracking-wider font-semibold mb-2">
+          ${t('Interactive Inspection Workbench', 'Môi trường Kiểm thử Đối soát Thực tế')}
+        </div>
+        <h2 class="text-[34px] sm:text-[40px] text-white leading-tight font-bold tracking-tight">
+          ${t('See how the auditor isolates discrepancies across messy payloads.', 'Xem cách hệ thống phát hiện chênh lệch qua các tình huống thực tế.')}
         </h2>
-        <p class="text-[16px] text-[#3d3d3a] mt-3">
-          Select a multi-source audit scenario below to inspect how VeraLedger cross-correlates documents, computes deterministic variances, and generates immutable audit tokens.
+        <p class="text-[15px] text-slate-300 mt-3">
+          ${t(
+            'Select a multi-source audit scenario below to inspect how VeraLedger correlates documents, detects discrepancies, and issues audit tokens.',
+            'Chọn một kịch bản rà soát bên dưới để xem VeraLedger đối chiếu chéo chứng từ, tính toán chênh lệch và xuất mã xác thực kiểm toán.'
+          )}
         </p>
       </div>
 
       <!-- Tab Buttons -->
-      <div class="flex flex-wrap items-center gap-2 mb-8 border-b border-[#e6dfd8] pb-4">
-        <button id="tab-btn-3way" class="px-4 py-2 text-[14px] font-medium rounded-[8px] bg-[#efe9de] text-[#141413] transition">
-          Scenario A: 3-Way Enterprise PO Match
+      <div class="flex flex-wrap items-center gap-2 mb-8 border-b border-white/10 pb-4">
+        <button id="tab-btn-3way" class="px-4 py-2 text-[13.5px] font-semibold rounded-lg bg-blue-600 text-white transition">
+          ${t('Scenario A: 4-Way Enterprise PO Match', 'Tình huống A: Đối soát 4 chiều PO & Hóa đơn')}
         </button>
-        <button id="tab-btn-fx" class="px-4 py-2 text-[14px] font-medium rounded-[8px] bg-transparent text-[#6c6a64] hover:text-[#141413] transition">
-          Scenario B: Multi-Currency FX Slippage
+        <button id="tab-btn-fx" class="px-4 py-2 text-[13.5px] font-semibold rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-white/10 transition">
+          ${t('Scenario B: FX Rate & Under-Declaration Check', 'Tình huống B: Chênh lệch tỷ giá ngoại tệ & Thuế')}
         </button>
-        <button id="tab-btn-fraud" class="px-4 py-2 text-[14px] font-medium rounded-[8px] bg-transparent text-[#6c6a64] hover:text-[#141413] transition">
-          Scenario C: Shadow Invoice & IBAN Tampering
+        <button id="tab-btn-fraud" class="px-4 py-2 text-[13.5px] font-semibold rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-white/10 transition">
+          ${t('Scenario C: Suspended Vendor & IBAN Tampering', 'Tình huống C: Người bán ngừng hoạt động & Đổi tài khoản')}
         </button>
       </div>
 
@@ -31,84 +38,82 @@ export function renderWorkbench(): string {
         
         <!-- Left: Source Evidence Panel -->
         <div class="lg:col-span-5 space-y-4">
-          <div class="bg-[#efe9de] rounded-[12px] p-6 card-border-hairline">
-            <h3 class="text-[18px] font-semibold text-[#141413] mb-1 flex items-center justify-between">
+          <div class="bg-slate-900 rounded-xl p-6 border border-white/10">
+            <h3 class="text-[17px] font-bold text-white mb-1 flex items-center justify-between">
               <span id="scenario-title">Vendor Invoice vs PO Ledger</span>
-              <span class="text-[11px] font-mono bg-[#cc785c] text-white px-2 py-0.5 rounded">SOURCE CORRELATION</span>
+              <span class="text-[10px] font-mono bg-blue-600 text-white px-2 py-0.5 rounded font-semibold tracking-wider">SOURCE CORRELATION</span>
             </h3>
-            <p id="scenario-desc" class="text-[13px] text-[#6c6a64] mb-4">
+            <p id="scenario-desc" class="text-[13px] text-slate-400 mb-4">
               Comparing scanned supplier PDF against NetSuite open PO balance and Chase bank wire record.
             </p>
 
             <!-- Evidence Data Table -->
             <div class="space-y-3 text-[13px]" id="evidence-box">
-              <div class="p-3 bg-[#faf9f5] rounded-[8px] card-border-hairline">
-                <div class="text-[11px] text-[#8e8b82] uppercase font-mono mb-1">Source 1: Scanned PDF (Vendor AWS)</div>
-                <div class="flex justify-between font-mono font-medium text-[#141413]">
-                  <span>Total Due: $14,920.00</span>
-                  <span class="text-[#5db872]">OCR Acc: 99.9%</span>
+              <div class="p-3.5 bg-slate-950 rounded-lg border border-white/5 font-mono">
+                <div class="text-[11px] text-slate-400 uppercase mb-1">Source 1: E-Invoice XML / PDF (Vendor FPT)</div>
+                <div class="flex justify-between font-medium text-white">
+                  <span>Total Due: 68,580,000 VND</span>
+                  <span class="text-emerald-400">OCR Acc: 99.9%</span>
                 </div>
-                <div class="text-[12px] text-[#6c6a64] mt-1">Invoice #AWS-99201 • Due: 2026-11-01</div>
+                <div class="text-[11.5px] text-slate-400 mt-1">Invoice #FPT-2026-9014 • Due: 2026-10-31</div>
               </div>
 
-              <div class="p-3 bg-[#faf9f5] rounded-[8px] card-border-hairline">
-                <div class="text-[11px] text-[#8e8b82] uppercase font-mono mb-1">Source 2: NetSuite ERP PO #4120</div>
-                <div class="flex justify-between font-mono font-medium text-[#141413]">
-                  <span>Approved Cap: $15,000.00</span>
-                  <span class="text-[#5db8a6]">Status: Open PO</span>
+              <div class="p-3.5 bg-slate-950 rounded-lg border border-white/5 font-mono">
+                <div class="text-[11px] text-slate-400 uppercase mb-1">Source 2: ERP Open PO #4120</div>
+                <div class="flex justify-between font-medium text-white">
+                  <span>Approved Budget: 70,000,000 VND</span>
+                  <span class="text-blue-400">Status: Approved PO</span>
                 </div>
-                <div class="text-[12px] text-[#6c6a64] mt-1">Cost Center: Infrastructure / Engineering</div>
+                <div class="text-[11.5px] text-slate-400 mt-1">Cost Center: Infrastructure / Tech Hub Hanoi</div>
               </div>
 
-              <div class="p-3 bg-[#faf9f5] rounded-[8px] card-border-hairline">
-                <div class="text-[11px] text-[#8e8b82] uppercase font-mono mb-1">Source 3: Chase Treasury Feed</div>
-                <div class="flex justify-between font-mono font-medium text-[#141413]">
-                  <span>Outflow: -$14,920.00</span>
-                  <span class="text-[#5db872]">Settled ACH</span>
+              <div class="p-3.5 bg-slate-950 rounded-lg border border-white/5 font-mono">
+                <div class="text-[11px] text-slate-400 uppercase mb-1">Source 3: Bank Settlement Feed (UNC)</div>
+                <div class="flex justify-between font-medium text-white">
+                  <span>Outflow: -68,580,000 VND</span>
+                  <span class="text-emerald-400">Settled Wire</span>
                 </div>
-                <div class="text-[12px] text-[#6c6a64] mt-1">Trace #TXN-CHASE-0029910 • 10:14 AM EST</div>
+                <div class="text-[11.5px] text-slate-400 mt-1">Beneficiary: FPT Telecom JSC • 10:14 AM</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Right: Small VLM Deterministic Output Chrome -->
+        <!-- Right: Deterministic Output Chrome -->
         <div class="lg:col-span-7">
-          <div class="bg-[#181715] rounded-[12px] p-6 text-[#faf9f5] card-dark-border h-full flex flex-col justify-between">
+          <div class="bg-slate-900 rounded-xl p-6 text-slate-200 border border-white/10 h-full flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between pb-3 mb-4 border-b border-white/10">
                 <div class="flex items-center gap-2">
-                  <svg class="text-[#cc785c] w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M11 2h2v7.5l5.3-5.3 1.4 1.4L14.5 11H22v2h-7.5l5.3 5.3-1.4 1.4L13 14.5V22h-2v-7.5l-5.3 5.3-1.4-1.4L9.5 13H2v-2h7.5L4.3 5.7l1.4-1.4L11 9.5V2z"/>
-                  </svg>
-                  <span class="text-[13px] font-mono text-white">audit_assertion_receipt.json</span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                  <span class="text-[13px] font-mono text-white font-semibold">audit_assertion_receipt.json</span>
                 </div>
-                <span id="audit-tag" class="text-[11px] font-mono bg-[#5db872]/20 text-[#5db872] px-2 py-0.5 rounded border border-[#5db872]/30">
+                <span id="audit-tag" class="text-[11px] font-mono bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30 font-semibold">
                   DECISION: APPROVED_AUTO_POST
                 </span>
               </div>
 
-              <pre id="json-output" class="bg-[#1f1e1b] p-4 rounded-[8px] border border-white/5 text-[12px] font-mono text-[#a09d96] overflow-x-auto leading-relaxed">
+              <pre id="json-output" class="bg-slate-950 p-4 rounded-lg border border-white/5 text-[12px] font-mono text-slate-300 overflow-x-auto leading-relaxed">
 {
-  "match_status": "EXACT_THREE_WAY_BALANCED",
+  "match_status": "EXACT_FOUR_WAY_BALANCED",
   "confidence_score": 0.9998,
   "variance_detected": {
     "amount": 0.00,
-    "currency": "USD"
+    "currency": "VND"
   },
   "audit_trail": {
     "po_id": "NETSUITE_PO_4120",
-    "invoice_id": "AWS-99201",
-    "bank_tx_id": "TXN-CHASE-0029910",
+    "invoice_id": "FPT-2026-9014",
+    "bank_tx_id": "TCB-WIRE-202610-991",
     "sha256_evidence": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
-  "action_taken": "POSTED_JOURNAL_ENTRY_TO_NETSUITE"
+  "action_taken": "POSTED_JOURNAL_ENTRY_TO_ERP"
 }</pre>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[12px] text-[#a09d96]">
-              <span>Signed by VeraLedger Key ID: <code>vl_sec_99182a</code></span>
-              <span class="text-[#cc785c] font-medium hover:underline cursor-pointer">Download Cryptographic Receipt →</span>
+            <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[12px] text-slate-400 font-mono">
+              <span>Verified Key: <code>vl_sec_hanoi_99182</code></span>
+              <span class="text-blue-400 font-medium hover:underline cursor-pointer">${t('Download Audit Token →', 'Tải mã xác thực kiểm toán →')}</span>
             </div>
           </div>
         </div>

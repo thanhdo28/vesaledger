@@ -1,4 +1,5 @@
 import './style.css';
+import { setLang, getLang, onLangChange, t } from './i18n';
 import { renderNavbar } from './components/Navbar';
 import { renderHero } from './components/Hero';
 import { renderExtractionPipeline } from './components/ExtractionPipeline';
@@ -15,22 +16,26 @@ import { renderFooter } from './components/Footer';
 import { sampleDocs } from './data/sampleDocs';
 import { scenarios } from './data/scenarios';
 
-// Render full template into #app
 const app = document.querySelector<HTMLDivElement>('#app')!;
-app.innerHTML = `
-  ${renderNavbar()}
-  ${renderHero()}
-  ${renderExtractionPipeline()}
-  ${renderWorkbench()}
-  ${renderArchitecture()}
-  ${renderModels()}
-  ${renderIntegrations()}
-  ${renderSecurity()}
-  ${renderRoiCalculator()}
-  ${renderPricing()}
-  ${renderPilotForm()}
-  ${renderFooter()}
-`;
+
+function renderApp() {
+  app.innerHTML = `
+    ${renderNavbar()}
+    ${renderHero()}
+    ${renderExtractionPipeline()}
+    ${renderWorkbench()}
+    ${renderArchitecture()}
+    ${renderModels()}
+    ${renderIntegrations()}
+    ${renderSecurity()}
+    ${renderRoiCalculator()}
+    ${renderPricing()}
+    ${renderPilotForm()}
+    ${renderFooter()}
+  `;
+
+  bindEvents();
+}
 
 // --- Interactive Logic for Extraction Sandbox ---
 let currentDocKey: keyof typeof sampleDocs = 'invoice';
@@ -77,9 +82,9 @@ function selectSampleDoc(docKey: keyof typeof sampleDocs) {
     const btn = document.getElementById('btn-sample-' + key);
     if (btn) {
       if (key === docKey) {
-        btn.className = "px-3.5 py-1.5 text-[13px] font-medium rounded-[8px] bg-[#efe9de] text-[#141413] border border-[#e6dfd8] transition";
+        btn.className = "px-3 py-1.5 text-[12px] font-semibold rounded-lg bg-blue-600 text-white transition";
       } else {
-        btn.className = "px-3.5 py-1.5 text-[13px] font-medium rounded-[8px] bg-transparent text-[#6c6a64] hover:text-[#141413] border border-transparent transition";
+        btn.className = "px-3 py-1.5 text-[12px] font-medium rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-white/10 transition";
       }
     }
   });
@@ -95,26 +100,26 @@ function updateErpTarget() {
   const statusBox = document.getElementById('sync-status-box');
 
   if (statusBox) {
-    statusBox.innerHTML = 'Ready for automated straight-through processing.';
-    statusBox.className = 'p-3 rounded bg-[#252320] border border-white/10 text-[11px] text-[#a09d96]';
+    statusBox.innerHTML = t('Ready for automated straight-through processing.', 'Sẵn sàng xử lý tự động thẳng vào sổ cái.');
+    statusBox.className = 'p-3 rounded-lg bg-slate-900 border border-white/10 text-[11px] text-slate-400';
   }
 
   if (erp === 'netsuite') {
     if (actionEl) actionEl.innerText = 'API POST: /services/rest/record/v1/vendorBill';
     if (detailsEl) detailsEl.innerHTML = `• Entity ID: <code>${doc.entityId}</code><br>• Posting Period: <code>2026-10</code><br>• GL Debit: <code>${doc.glDebit}</code><br>• AP Credit: <code>2000 - Accounts Payable</code><br>• Attachment: <code>sha256:7b29a...pdf</code>`;
-    if (btnEl) btnEl.innerHTML = `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span>Dispatch Bill to NetSuite</span>`;
+    if (btnEl) btnEl.innerHTML = `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span>${t('Dispatch Bill to NetSuite', 'Đẩy hóa đơn vào NetSuite')}</span>`;
   } else if (erp === 'quickbooks') {
     if (actionEl) actionEl.innerText = 'API POST: /v3/company/9130/bill';
     if (detailsEl) detailsEl.innerHTML = `• VendorRef: <code>${doc.entityId}</code><br>• AccountRef: <code>${doc.glDebit}</code><br>• TxnDate: <code>${doc.date}</code><br>• Line Items: <code>Itemized JSON mapped</code><br>• AttachmentRef: <code>receipt_vault_id: 99182</code>`;
-    if (btnEl) btnEl.innerHTML = `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span>Dispatch Expense to QuickBooks</span>`;
+    if (btnEl) btnEl.innerHTML = `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span>${t('Dispatch Expense to QuickBooks', 'Đẩy chi phí vào QuickBooks')}</span>`;
   } else if (erp === 'xero') {
     if (actionEl) actionEl.innerText = 'API PUT: /api.xro/2.0/Invoices (Type: ACCPAY)';
     if (detailsEl) detailsEl.innerHTML = `• Contact: <code>${doc.schemaVendor}</code><br>• AccountCode: <code>400 - Operating Expense</code><br>• Status: <code>AUTHORISED</code><br>• LineAmountTypes: <code>Exclusive</code>`;
-    if (btnEl) btnEl.innerHTML = `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span>Dispatch Bill to Xero</span>`;
+    if (btnEl) btnEl.innerHTML = `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span>${t('Dispatch Bill to Xero', 'Đẩy hóa đơn vào Xero')}</span>`;
   } else {
     if (actionEl) actionEl.innerText = 'RFC BAPI_ACC_DOCUMENT_POST: SAP S/4HANA';
     if (detailsEl) detailsEl.innerHTML = `• DocType: <code>KR (Vendor Invoice)</code><br>• CompCode: <code>1000</code><br>• Header: <code>VERALEDGER_${doc.inv}</code><br>• Balance Check: <code>0.00 Variance Verified</code>`;
-    if (btnEl) btnEl.innerHTML = `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span>Dispatch Bill to SAP</span>`;
+    if (btnEl) btnEl.innerHTML = `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span>${t('Dispatch Bill to SAP', 'Đẩy hóa đơn vào SAP')}</span>`;
   }
 }
 
@@ -122,21 +127,21 @@ function executeErpSync() {
   const btn = document.getElementById('btn-sync-erp');
   const statusBox = document.getElementById('sync-status-box');
 
-  if (btn) btn.innerHTML = '<span>Processing VLM STP Gateway...</span>';
+  if (btn) btn.innerHTML = `<span>${t('Processing STP Gateway...', 'Đang xử lý qua cổng STP...')}</span>`;
 
   setTimeout(() => {
     const txnId = 'TXN-ERP-2026-' + Math.floor(100000 + Math.random() * 900000);
     if (statusBox) {
-      statusBox.className = 'p-3 rounded bg-[#5db872]/20 border border-[#5db872]/40 text-[11px] text-[#5db872] space-y-1';
+      statusBox.className = 'p-3 rounded-lg bg-emerald-950/40 border border-emerald-500/40 text-[11px] text-emerald-400 space-y-1';
       statusBox.innerHTML = `
         <div class="font-bold flex items-center gap-1.5">✓ POST SUCCESSFUL (HTTP 201 CREATED)</div>
         <div class="text-white font-mono text-[10px]">Transaction Ref: <code>${txnId}</code></div>
-        <div class="text-[#a09d96] text-[10px]">Document attached, dual GL entry balanced, audit token signed.</div>
+        <div class="text-slate-300 text-[10px]">${t('Document attached, dual GL entry balanced, audit token signed.', 'Đính kèm chứng từ, cân đối định khoản nợ/có, tạo chữ ký kiểm toán.')}</div>
       `;
     }
     if (btn) {
-      btn.innerHTML = '<span>✓ Synced to Accounting Program</span>';
-      btn.className = 'w-full py-2.5 text-[13px] font-medium bg-[#5db872] text-black rounded-[6px] transition flex items-center justify-center gap-2 shadow-sm';
+      btn.innerHTML = `<span>✓ ${t('Synced to Accounting ERP', 'Đã đồng bộ vào sổ cái ERP')}</span>`;
+      btn.className = 'w-full py-2.5 text-[13px] font-semibold bg-emerald-600 text-white rounded-lg transition flex items-center justify-center gap-2 shadow-md';
     }
   }, 350);
 }
@@ -163,24 +168,13 @@ function switchScenario(scenarioKey: keyof typeof scenarios) {
     const btn = document.getElementById(`tab-btn-${key}`);
     if (btn) {
       if (key === scenarioKey) {
-        btn.className = "px-4 py-2 text-[14px] font-medium rounded-[8px] bg-[#efe9de] text-[#141413] transition";
+        btn.className = "px-4 py-2 text-[13.5px] font-semibold rounded-lg bg-blue-600 text-white transition";
       } else {
-        btn.className = "px-4 py-2 text-[14px] font-medium rounded-[8px] bg-transparent text-[#6c6a64] hover:text-[#141413] transition";
+        btn.className = "px-4 py-2 text-[13.5px] font-semibold rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-white/10 transition";
       }
     }
   });
 }
-
-// Bind DOM event listeners
-document.getElementById('btn-sample-invoice')?.addEventListener('click', () => selectSampleDoc('invoice'));
-document.getElementById('btn-sample-receipt')?.addEventListener('click', () => selectSampleDoc('receipt'));
-document.getElementById('btn-sample-contractor')?.addEventListener('click', () => selectSampleDoc('contractor'));
-document.getElementById('erp-select')?.addEventListener('change', updateErpTarget);
-document.getElementById('btn-sync-erp')?.addEventListener('click', executeErpSync);
-
-document.getElementById('tab-btn-3way')?.addEventListener('click', () => switchScenario('3way'));
-document.getElementById('tab-btn-fx')?.addEventListener('click', () => switchScenario('fx'));
-document.getElementById('tab-btn-fraud')?.addEventListener('click', () => switchScenario('fraud'));
 
 // --- Interactive Logic for ROI Calculator ---
 function updateRoiCalculator() {
@@ -202,10 +196,9 @@ function updateRoiCalculator() {
   if (volDisplay) volDisplay.innerText = volume.toLocaleString() + ' docs';
   if (rateDisplay) rateDisplay.innerText = '$' + rate + ' / hr';
 
-  // Average manual invoice entry + cross-check = 3.5 minutes per doc
   const hoursSaved = Math.round((volume * 3.5) / 60);
   const dollarsSaved = Math.round(hoursSaved * rate);
-  const errorsBlocked = Math.round(volume * 0.03); // 3% typical manual entry discrepancy rate
+  const errorsBlocked = Math.round(volume * 0.03);
 
   if (hoursSavedEl) hoursSavedEl.innerText = hoursSaved.toLocaleString() + ' hrs';
   if (dollarsSavedEl) dollarsSavedEl.innerText = '$' + dollarsSaved.toLocaleString();
@@ -213,22 +206,46 @@ function updateRoiCalculator() {
 
   if (planRecEl) {
     if (volume <= 500) {
-      planRecEl.innerText = 'Starter ($20/mo)';
+      planRecEl.innerText = t('Starter ($20/mo)', 'Gói Cơ bản (490.000 đ/tháng)');
     } else if (volume <= 5000) {
-      planRecEl.innerText = 'Growth ($99/mo)';
+      planRecEl.innerText = t('Growth ($99/mo)', 'Gói Tăng trưởng (2.490.000 đ/tháng)');
     } else {
-      planRecEl.innerText = 'Enterprise ($499+/mo)';
+      planRecEl.innerText = t('Enterprise ($499+/mo)', 'Gói Doanh nghiệp (Theo báo giá)');
     }
   }
 }
 
-document.getElementById('calc-volume-slider')?.addEventListener('input', updateRoiCalculator);
-document.getElementById('calc-rate-slider')?.addEventListener('input', updateRoiCalculator);
+function bindEvents() {
+  document.getElementById('lang-btn-en')?.addEventListener('click', () => setLang('en'));
+  document.getElementById('lang-btn-vi')?.addEventListener('click', () => setLang('vi'));
 
-// Initial calc
-updateRoiCalculator();
+  document.getElementById('btn-sample-invoice')?.addEventListener('click', () => selectSampleDoc('invoice'));
+  document.getElementById('btn-sample-receipt')?.addEventListener('click', () => selectSampleDoc('receipt'));
+  document.getElementById('btn-sample-contractor')?.addEventListener('click', () => selectSampleDoc('contractor'));
+  document.getElementById('erp-select')?.addEventListener('change', updateErpTarget);
+  document.getElementById('btn-sync-erp')?.addEventListener('click', executeErpSync);
 
-document.getElementById('pilot-form')?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  alert('Pilot request logged! An engineer will reach out within 2 business hours.');
+  document.getElementById('tab-btn-3way')?.addEventListener('click', () => switchScenario('3way'));
+  document.getElementById('tab-btn-fx')?.addEventListener('click', () => switchScenario('fx'));
+  document.getElementById('tab-btn-fraud')?.addEventListener('click', () => switchScenario('fraud'));
+
+  document.getElementById('calc-volume-slider')?.addEventListener('input', updateRoiCalculator);
+  document.getElementById('calc-rate-slider')?.addEventListener('input', updateRoiCalculator);
+
+  document.getElementById('pilot-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert(t(
+      'Thank you! Your pilot request has been logged. Our solutions team in Hanoi will contact you at your work email within 2 business hours.',
+      'Cảm ơn bạn! Yêu cầu chạy thử đã được ghi nhận. Đội ngũ giải pháp tại Hà Nội sẽ liên hệ qua email công việc trong vòng 2 giờ làm việc.'
+    ));
+  });
+
+  updateRoiCalculator();
+}
+
+onLangChange(() => {
+  renderApp();
 });
+
+// Initial render
+renderApp();

@@ -1,39 +1,71 @@
-export function renderNavbar(): string {
-  return `
-  <header class="sticky top-0 z-50 bg-[#faf9f5]/90 backdrop-blur-md border-b border-[#e6dfd8]">
-    <div class="max-w-[1240px] mx-auto px-6 h-16 flex items-center justify-between">
-      <!-- Logo / Wordmark -->
-      <div class="flex items-center gap-3">
-        <svg class="anthropic-spike text-[#141413] w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M11 2h2v7.5l5.3-5.3 1.4 1.4L14.5 11H22v2h-7.5l5.3 5.3-1.4 1.4L13 14.5V22h-2v-7.5l-5.3 5.3-1.4-1.4L9.5 13H2v-2h7.5L4.3 5.7l1.4-1.4L11 9.5V2z"/>
-        </svg>
-        <div class="flex items-baseline gap-1.5">
-          <span class="text-[17px] font-semibold text-[#141413] tracking-tight">Vera<span class="text-[#cc785c]">Ledger</span></span>
-          <span class="text-[11px] font-mono text-[#8e8b82] tracking-wider uppercase">v2.4</span>
-        </div>
-        <div class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#efe9de] text-[#141413] text-[12px] font-medium border border-[#e6dfd8] ml-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#5db872]"></span>
-          Compact VLM · Sub-Second Inference
-        </div>
-      </div>
+import { t, getLang } from '../i18n';
 
-      <!-- Links -->
-      <nav class="hidden lg:flex items-center gap-6 text-[14px] font-medium text-[#3d3d3a]">
-        <a href="#automation" class="hover:text-[#141413] transition text-[#cc785c]">Invoice Automation</a>
-        <a href="#pipeline" class="hover:text-[#141413] transition">Engine</a>
-        <a href="#workbench" class="hover:text-[#141413] transition">Live Sandbox</a>
-        <a href="#roi-calculator" class="hover:text-[#141413] transition">ROI Calculator</a>
-        <a href="#pricing" class="hover:text-[#141413] transition">Pricing ($20/mo)</a>
-        <a href="#security" class="hover:text-[#141413] transition">Security</a>
+export function renderNavbar(): string {
+  const lang = getLang();
+  return `
+  <!-- Top Global Utility Bar -->
+  <div class="bg-slate-900/90 text-slate-400 text-[11px] font-mono border-b border-white/5 py-1.5 px-6 hidden sm:block">
+    <div class="max-w-[1240px] mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          ${t('All Systems Operational · 99.98% SLA', 'Hệ thống vận hành ổn định · Cam kết SLA 99,98%')}
+        </span>
+        <span class="text-white/20">|</span>
+        <span>${t('Tier-III DC Architecture', 'Kiến trúc DC Chuẩn Tier-III')}</span>
+        <span class="text-white/20">|</span>
+        <span>${t('SOC 2 & ISO 27001 Ready', 'Sẵn sàng chuẩn SOC 2 &amp; ISO 27001')}</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span>${t('Tel:', 'Điện thoại:')} <a href="tel:+84944002809" class="text-slate-200 hover:text-white font-semibold">0944 002 809</a></span>
+        <span class="text-white/20">|</span>
+        <span>Email: <a href="mailto:support@veraledger.site" class="text-slate-200 hover:text-white">support@veraledger.site</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Header -->
+  <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-[1240px] mx-auto px-6 h-16 flex items-center justify-between">
+      
+      <!-- Logo / Wordmark -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 group-hover:scale-105 transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+            <polyline points="2 17 12 22 22 17" />
+            <polyline points="2 12 12 17 22 12" />
+          </svg>
+        </div>
+        <div class="flex items-baseline gap-1.5">
+          <span class="text-[17px] font-bold text-white tracking-tight">Vera<span class="text-blue-500">Ledger</span></span>
+          <span class="text-[10px] font-mono text-slate-500 tracking-wider uppercase bg-white/5 px-1.5 py-0.5 rounded border border-white/5">v2.5</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium text-slate-300">
+        <a href="#automation" class="hover:text-white transition">${t('Reconciliation', 'Đối soát 4 chiều')}</a>
+        <a href="#workbench" class="hover:text-white transition">${t('Live Sandbox', 'Môi trường mẫu')}</a>
+        <a href="#connectors" class="hover:text-white transition">${t('ERP Connectors', 'Tích hợp ERP')}</a>
+        <a href="#roi-calculator" class="hover:text-white transition">${t('ROI Calculator', 'Tính toán ROI')}</a>
+        <a href="#pricing" class="hover:text-white transition">${t('Pricing', 'Bảng giá')}</a>
+        <a href="#security" class="hover:text-white transition">${t('Security & SLA', 'Bảo mật &amp; SLA')}</a>
       </nav>
 
-      <!-- Right cluster -->
-      <div class="flex items-center gap-4">
-        <a href="#pricing" class="hidden md:inline-block text-[14px] font-medium text-[#141413] hover:text-[#cc785c] transition">
-          Sign in
+      <!-- Right Action Cluster & Language Switcher -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switch -->
+        <div class="flex items-center gap-1 bg-white/5 p-1 rounded-lg border border-white/10 text-[11px] font-mono">
+          <button id="lang-btn-en" class="px-2 py-0.5 rounded transition ${lang === 'en' ? 'bg-blue-600 text-white font-semibold' : 'text-slate-400 hover:text-white'}">EN</button>
+          <button id="lang-btn-vi" class="px-2 py-0.5 rounded transition ${lang === 'vi' ? 'bg-blue-600 text-white font-semibold' : 'text-slate-400 hover:text-white'}">VI</button>
+        </div>
+
+        <a href="#pricing" class="hidden sm:inline-block px-4 py-2 text-[13px] font-medium text-slate-300 hover:text-white transition">
+          ${t('Sign in', 'Đăng nhập')}
         </a>
-        <a href="#pricing" class="px-5 py-2.5 text-[14px] font-medium bg-[#cc785c] hover:bg-[#a9583e] active:bg-[#a9583e] text-white rounded-[8px] transition shadow-sm">
-          Start Free Trial
+        <a href="#pilot" class="px-4 py-2 text-[13px] font-medium bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white rounded-lg transition shadow-sm shadow-blue-600/30">
+          ${t('Book a Demo', 'Đặt lịch Demo')}
         </a>
       </div>
     </div>
