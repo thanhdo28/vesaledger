@@ -79,15 +79,73 @@ export function renderFooter(): string {
 
       <!-- Bottom Bar -->
       <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[12px] text-slate-500 gap-4">
-        <div>© 2026 VeraLedger Technologies Vietnam (veraledger.site). ${t('All rights reserved.', 'Bảo lưu mọi quyền.')}</div>
+        <div>
+          <div>© 2026 VeraLedger Technologies Vietnam (veraledger.site). ${t('All rights reserved.', 'Bảo lưu mọi quyền.')}</div>
+          <div class="text-[11px] font-mono text-slate-500 pt-1">${t('Engineered by AI Finance Team in Hanoi, Vietnam', 'Phát triển bởi đội ngũ công nghệ tài chính tại Hà Nội, Việt Nam')}</div>
+        </div>
         <div class="flex items-center gap-6">
-          <a href="#" class="hover:text-slate-300 transition">${t('Privacy Policy', 'Chính sách bảo mật')}</a>
-          <a href="#" class="hover:text-slate-300 transition">${t('Terms of Service', 'Điều khoản dịch vụ')}</a>
+          <button id="btn-open-privacy" class="hover:text-slate-300 transition text-[12px]">${t('Privacy Policy', 'Chính sách bảo mật')}</button>
+          <button id="btn-open-terms" class="hover:text-slate-300 transition text-[12px]">${t('Terms of Service', 'Điều khoản dịch vụ')}</button>
           <span class="text-slate-600">|</span>
           <span class="text-slate-400 font-mono">Hanoi, Vietnam 🇻🇳</span>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Privacy Policy Modal -->
+  <div id="modal-privacy" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-white/10 rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto space-y-4 text-slate-300 text-[13.5px]">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3">
+        <h3 class="text-[18px] font-bold text-white">${t('Data Privacy & Security Policy', 'Chính sách Bảo mật Dữ liệu')}</h3>
+        <button id="btn-close-privacy" class="text-slate-400 hover:text-white text-lg font-bold">✕</button>
+      </div>
+      <p class="leading-relaxed">
+        ${t(
+          'VeraLedger operates with strict Zero Data Retention (ZDR) guarantees. We do not use corporate documents, tax invoices, purchase orders, or bank statements to train external AI models.',
+          'VeraLedger áp dụng nguyên tắc Zero Data Retention (ZDR) tuyệt đối. Chúng tôi không sử dụng chứng từ, hóa đơn thuế, đơn đặt hàng hoặc sao kê ngân hàng của khách hàng để huấn luyện các mô hình AI thương mại.'
+        )}
+      </p>
+      <h4 class="text-white font-semibold pt-2">${t('Compliance & Encryption Standards', 'Tiêu chuẩn Bảo mật &amp; Mã hóa')}</h4>
+      <ul class="list-disc pl-5 space-y-1 text-slate-400 text-[13px]">
+        <li>${t('AES-256 encryption at rest; TLS 1.3 encryption in transit.', 'Mã hóa dữ liệu lưu trữ chuẩn AES-256; truyền tải dữ liệu qua TLS 1.3.')}</li>
+        <li>${t('Aligned with Vietnam Personal Data Protection Decree 13/2023/ND-CP.', 'Tuân thủ Nghị định 13/2023/NĐ-CP về Bảo vệ Dữ liệu Cá nhân của Việt Nam.')}</li>
+        <li>${t('Customer-Managed Encryption Key (CMEK) options for enterprise VPCs.', 'Hỗ trợ khách hàng tự quản lý khóa mã hóa (CMEK) cho hạ tầng riêng.')}</li>
+      </ul>
+      <div class="pt-4 border-t border-white/10 text-right">
+        <button id="btn-dismiss-privacy" class="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-[13px] transition">
+          ${t('Close', 'Đóng')}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms of Service Modal -->
+  <div id="modal-terms" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-white/10 rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto space-y-4 text-slate-300 text-[13.5px]">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3">
+        <h3 class="text-[18px] font-bold text-white">${t('Terms of Service & Pilot Agreement', 'Điều khoản Dịch vụ &amp; Thỏa thuận Thử nghiệm')}</h3>
+        <button id="btn-close-terms" class="text-slate-400 hover:text-white text-lg font-bold">✕</button>
+      </div>
+      <p class="leading-relaxed">
+        ${t(
+          'VeraLedger provides automated financial pre-reconciliation and discrepancy detection tools. The software serves as an audit-readiness assistant and does not constitute statutory tax certification or legal accounting representation.',
+          'VeraLedger cung cấp công cụ đối soát chéo và phát hiện sai sót kế toán tự động. Hệ thống đóng vai trò hỗ trợ kiểm soát nội bộ và không thay thế trách nhiệm pháp lý kê khai thuế của doanh nghiệp.'
+        )}
+      </p>
+      <h4 class="text-white font-semibold pt-2">${t('Pilot Cohort Terms', 'Điều khoản Chương trình Thử nghiệm Pilot')}</h4>
+      <p class="text-slate-400 text-[13px]">
+        ${t(
+          'Qualified pilot participants receive access to 4-way matching engines with dedicated support from our solutions team in Hanoi, Vietnam.',
+          'Doanh nghiệp tham gia chương trình thử nghiệm được cấp quyền truy cập hệ thống đối soát 4 chiều kèm sự hỗ trợ trực tiếp từ đội ngũ giải pháp tại Hà Nội.'
+        )}
+      </p>
+      <div class="pt-4 border-t border-white/10 text-right">
+        <button id="btn-dismiss-terms" class="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-[13px] transition">
+          ${t('Close', 'Đóng')}
+        </button>
+      </div>
+    </div>
+  </div>
   `;
 }

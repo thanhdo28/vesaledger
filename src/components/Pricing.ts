@@ -143,8 +143,8 @@ export function renderPricing(): string {
         <div class="flex items-center gap-3.5">
           <div class="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold text-base">✓</div>
           <div>
-            <h4 class="text-[15px] font-semibold text-white">${t('100% Deterministic Guarantee', 'Cam kết đối soát chính xác 100%')}</h4>
-            <p class="text-[12.5px] text-slate-400">${t('If VeraLedger fails to catch an invoice discrepancy on your paid plan, we credit that entire billing month.', 'Nếu hệ thống bỏ sót chênh lệch hóa đơn trong phạm vi cam kết, chúng tôi hoàn 100% phí tháng đó.')}</p>
+            <h4 class="text-[15px] font-semibold text-white">${t('Deterministic Rule Verification', 'Cam kết kiểm tra chéo theo quy tắc chính xác')}</h4>
+            <p class="text-[12.5px] text-slate-400">${t('All line items, tax rates, and wire settlements are mathematically balanced against POs with cryptographic audit receipts.', 'Toàn bộ số tiền, thuế suất và ủy nhiệm chi ngân hàng được cân đối toán học với đơn đặt hàng kèm chữ ký mật mã kiểm toán.')}</p>
           </div>
         </div>
         <div class="text-[12px] font-mono text-slate-400">

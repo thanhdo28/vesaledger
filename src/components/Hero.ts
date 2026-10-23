@@ -13,7 +13,7 @@ export function renderHero(): string {
         <div class="lg:col-span-6 space-y-6">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/60 border border-blue-500/30 text-blue-300 text-[12px] font-mono tracking-wide">
             <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
-            <span>${t('Automated 4-Way Cross-Ledger Verification', 'Hệ thống đối soát chéo sổ cái 4 chiều tự động')}</span>
+            <span>${t('Private Beta · 4-Way Cross-Ledger Reconciliation', 'Bản thử nghiệm kín · Đối soát chéo sổ cái 4 chiều')}</span>
           </div>
 
           <h1 class="text-[44px] sm:text-[54px] lg:text-[58px] leading-[1.08] text-white font-bold tracking-tight">
@@ -29,7 +29,7 @@ export function renderHero(): string {
 
           <div class="pt-2 flex flex-wrap items-center gap-4">
             <a href="#pilot" class="px-6 py-3.5 text-[14px] font-semibold bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white rounded-lg transition shadow-lg shadow-blue-600/25 inline-flex items-center gap-2">
-              <span>${t('Book a Product Demo', 'Đặt lịch Demo sản phẩm')}</span>
+              <span>${t('Apply for Pilot Cohort', 'Đăng ký Đợt Thử nghiệm')}</span>
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a href="#workbench" class="px-6 py-3.5 text-[14px] font-semibold bg-slate-900 hover:bg-slate-850 text-slate-200 border border-white/15 rounded-lg transition">
@@ -135,7 +135,7 @@ export function renderHero(): string {
 
             <!-- Card Footer -->
             <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
-              <span>${t('Audited Today: 64,280 documents', 'Đã rà soát hôm nay: 64.280 chứng từ')}</span>
+              <span>${t('Pilot Benchmark: 10,000+ Decree 123 XMLs Tested', 'Kiểm thử thực tế: 10.000+ XML hóa đơn NĐ 123')}</span>
               <span class="text-emerald-400">0.00ms Queue Delay</span>
             </div>
 

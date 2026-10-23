@@ -232,6 +232,17 @@ function bindEvents() {
   document.getElementById('calc-volume-slider')?.addEventListener('input', updateRoiCalculator);
   document.getElementById('calc-rate-slider')?.addEventListener('input', updateRoiCalculator);
 
+  // Privacy & Terms Modals
+  const pModal = document.getElementById('modal-privacy');
+  const tModal = document.getElementById('modal-terms');
+  document.getElementById('btn-open-privacy')?.addEventListener('click', () => pModal?.classList.remove('hidden'));
+  document.getElementById('btn-close-privacy')?.addEventListener('click', () => pModal?.classList.add('hidden'));
+  document.getElementById('btn-dismiss-privacy')?.addEventListener('click', () => pModal?.classList.add('hidden'));
+
+  document.getElementById('btn-open-terms')?.addEventListener('click', () => tModal?.classList.remove('hidden'));
+  document.getElementById('btn-close-terms')?.addEventListener('click', () => tModal?.classList.add('hidden'));
+  document.getElementById('btn-dismiss-terms')?.addEventListener('click', () => tModal?.classList.add('hidden'));
+
   document.getElementById('pilot-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     alert(t(

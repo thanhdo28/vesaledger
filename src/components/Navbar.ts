@@ -9,12 +9,12 @@ export function renderNavbar(): string {
       <div class="flex items-center gap-4">
         <span class="flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-slate-200">${t('All Systems Operational · 99.98% SLA', 'Hệ thống vận hành ổn định · Cam kết SLA 99,98%')}</span>
+          <span class="text-slate-200">${t('Private Beta Active · Q4 Pilot Cohort', 'Bản thử nghiệm kín · Đợt thử nghiệm Q4')}</span>
         </span>
         <span class="text-white/20">|</span>
-        <span class="text-slate-300">${t('Tier-III DC Architecture', 'Kiến trúc DC Chuẩn Tier-III')}</span>
+        <span class="text-slate-300">${t('AWS Tier-III Architecture', 'Kiến trúc Cloud Chuẩn Tier-III')}</span>
         <span class="text-white/20">|</span>
-        <span class="text-slate-300">${t('SOC 2 & ISO 27001 Ready', 'Sẵn sàng chuẩn SOC 2 &amp; ISO 27001')}</span>
+        <span class="text-slate-300">${t('SOC 2 & ISO 27001 Aligned', 'Kiểm soát theo chuẩn SOC 2 &amp; ISO 27001')}</span>
       </div>
       <div class="flex items-center gap-4">
         <span>${t('Hanoi Office: ', 'Văn phòng Hà Nội: ')}<a href="tel:+84944002809" class="text-slate-100 hover:text-white font-semibold">0944 002 809</a></span>
@@ -65,7 +65,7 @@ export function renderNavbar(): string {
           ${t('Sign in', 'Đăng nhập')}
         </a>
         <a href="#pilot" class="px-4 py-2 text-[13px] font-medium bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white rounded-lg transition shadow-sm shadow-blue-600/30">
-          ${t('Book a Demo', 'Đặt lịch Demo')}
+          ${t('Apply for Pilot', 'Đăng ký Thử nghiệm')}
         </a>
       </div>
     </div>
